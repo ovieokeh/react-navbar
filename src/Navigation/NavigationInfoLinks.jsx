@@ -19,6 +19,6 @@ const NavigationInfoLinks = ({ links, mainColor }) => (
   </NavItemsGroup>
 )
 
-NavigationWithAuth.propTypes = NavigationChildProps
+NavigationInfoLinks.propTypes = NavigationChildProps
 
 export default NavigationInfoLinks

@@ -1,14 +1,31 @@
 import React from 'react'
-import { Button } from '@storybook/react/demo'
 
-export default { title: 'Button' }
+import Navbar from '../src/index'
 
-export const withText = () => <Button>Hello Button</Button>
+export default { title: 'Navbar' }
 
-export const withEmoji = () => (
-  <Button>
-    <span role="img" aria-label="so cool">
-      😀 😎 👍 💯
-    </span>
-  </Button>
+const infoLinks = [
+  { text: 'Our Plans', to: '/plans' },
+  { text: 'How It Works', to: '/faq' },
+  { text: 'Menu', to: '/menu' }
+]
+
+const nonAuthLinks = [
+  { text: 'Get Started', to: '/sign-up' },
+  { text: 'Sign In', to: '/sign-in' }
+]
+
+const authLinks = [
+  { text: 'Landing', to: '/landing' },
+  { text: 'Home', to: '/home' },
+  { text: 'Account', to: '/account' }
+]
+
+export const demo = () => (
+  <Navbar
+    brand="naviar."
+    infoLinks={infoLinks}
+    authLinks={authLinks}
+    nonAuthLinks={nonAuthLinks}
+  />
 )

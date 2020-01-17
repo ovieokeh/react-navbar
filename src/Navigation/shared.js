@@ -4,7 +4,7 @@ export const NavItemsGroup = styled.ul`
   display: flex;
   justify-content: space-evenly;
   justify-self: ${props =>
-    props['data-type'] === 'info' ? 'flex-end' : 'flex-start'};
+    props['data-type'] === 'info' ? 'flex-start' : 'flex-end'};
   width: 100%;
   margin: 0;
   padding: 0.5em 0;
@@ -30,7 +30,7 @@ export const NavItemsGroupLinks = styled.li`
 
 export const NavItemsGroupLinksLink = styled.a`
   text-decoration: none;
-  color: rgba(0, 0, 0, 0.1);
+  color: ${props => props.color};
   transition: opacity 100ms ease-in;
 
   &:hover {
