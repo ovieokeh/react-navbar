@@ -1,13 +1,12 @@
 import React, { useState, useRef, useContext } from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
 
 import Brand from './Brand'
 import Hamburger from './Hamburger'
 import Links from './Links'
 
 import ThemeContext, { defaultTheme } from './styleContext'
-import { NavLinkProp, ThemeProps } from './propTypes'
+import { NavbarProps } from './propTypes'
 import useScrollSlide from './useScrollSlide'
 
 const Navbar = props => {
@@ -47,13 +46,7 @@ const Navbar = props => {
   )
 }
 
-Navbar.propTypes = {
-  brand: PropTypes.string.isRequired,
-  infoLinks: PropTypes.arrayOf(NavLinkProp),
-  nonAuthLinks: PropTypes.arrayOf(NavLinkProp),
-  authLinks: PropTypes.arrayOf(NavLinkProp),
-  theme: ThemeProps
-}
+Navbar.propTypes = NavbarProps
 
 const Nav = styled.nav`
   display: flex;

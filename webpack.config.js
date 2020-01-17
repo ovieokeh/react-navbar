@@ -2,19 +2,25 @@ const path = require('path')
 
 module.exports = {
   mode: 'production',
-  entry: './src/index.jsx',
+  entry: {
+    navbar: './src/index.jsx'
+  },
   output: {
     path: path.resolve('lib'),
     filename: 'Navbar.js',
-    libraryTarget: 'commonjs2'
+    libraryTarget: 'commonjs2',
+    libraryExport: ['Navbar']
   },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        exclude: /(node_modules)/,
-        use: 'babel-loader'
+        test: /\.(js|jsx)$/,
+        use: 'babel-loader',
+        exclude: [/node_modules/, /build/, /dist/]
       }
     ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
   }
 }

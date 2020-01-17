@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
+
+import { NavigationBrandProps } from './propTypes'
 
 const NavigationBrand = ({ route, brand, color }) => (
   <Brand>
@@ -10,11 +11,7 @@ const NavigationBrand = ({ route, brand, color }) => (
   </Brand>
 )
 
-NavigationBrand.propTypes = {
-  route: PropTypes.string.isRequired,
-  brand: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired
-}
+NavigationBrand.propTypes = NavigationBrandProps
 
 const Brand = styled.section`
   display: inline-flex;

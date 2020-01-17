@@ -1,12 +1,11 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import {
   NavItemsGroup,
   NavItemsGroupLinks,
   NavItemsGroupLinksLink
 } from './shared'
-import { NavLinkProp } from '../propTypes'
+import * as Props from '../propTypes'
 
 const NavigationAuthLinks = ({ isAuth, authLinks, nonAuthLinks, mainColor }) =>
   isAuth ? (
@@ -15,12 +14,7 @@ const NavigationAuthLinks = ({ isAuth, authLinks, nonAuthLinks, mainColor }) =>
     <NavigationNonAuth mainColor={mainColor} links={nonAuthLinks} />
   )
 
-NavigationAuthLinks.propTypes = {
-  isAuth: PropTypes.bool,
-  authLinks: PropTypes.arrayOf(NavLinkProp),
-  nonAuthLinks: PropTypes.arrayOf(NavLinkProp),
-  mainColor: PropTypes.string
-}
+NavigationAuthLinks.propTypes = Props.NavigationAuthLinksProps
 
 const NavigationWithAuth = ({ links, mainColor }) => (
   <NavItemsGroup data-type="auth">
@@ -34,10 +28,7 @@ const NavigationWithAuth = ({ links, mainColor }) => (
   </NavItemsGroup>
 )
 
-NavigationWithAuth.propTypes = {
-  links: PropTypes.arrayOf(NavLinkProp),
-  mainColor: PropTypes.string
-}
+NavigationWithAuth.propTypes = Props.NavigationChildProps
 
 const NavigationNonAuth = ({ links, mainColor }) => (
   <NavItemsGroup data-type="auth">
@@ -51,9 +42,6 @@ const NavigationNonAuth = ({ links, mainColor }) => (
   </NavItemsGroup>
 )
 
-NavigationNonAuth.propTypes = {
-  links: PropTypes.arrayOf(NavLinkProp),
-  mainColor: PropTypes.string
-}
+NavigationNonAuth.propTypes = Props.NavigationChildProps
 
 export default NavigationAuthLinks

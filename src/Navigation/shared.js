@@ -4,12 +4,11 @@ export const NavItemsGroup = styled.ul`
   display: flex;
   justify-content: space-evenly;
   justify-self: ${props =>
-    (props as any)['data-type'] === 'info' ? 'flex-end' : 'flex-start'};
+    props['data-type'] === 'info' ? 'flex-end' : 'flex-start'};
   width: 100%;
   margin: 0;
   padding: 0.5em 0;
-  max-width: ${props =>
-    (props as any)['data-type'] === 'info' ? '400px' : '250px'};
+  max-width: ${props => (props['data-type'] === 'info' ? '400px' : '250px')};
 
   @media (max-width: 768px) {
     flex-direction: column;

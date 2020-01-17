@@ -1,11 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
 
-import NavigationInfoLinks from '../src/Navigation/NavigationInfoLinks'
-import NavigationAuthLinks from '../src/Navigation/NavigationAuthLinks'
+import NavigationInfoLinks from './Navigation/NavigationInfoLinks'
+import NavigationAuthLinks from './Navigation/NavigationAuthLinks'
 
-import { NavLinkProp } from '../propTypes'
+import { NavigationLinksProps } from './propTypes'
 
 const NavigationLinks = ({
   isOpen,
@@ -26,13 +25,7 @@ const NavigationLinks = ({
   </NavLinks>
 )
 
-NavigationLinks.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  mainColor: PropTypes.string.isRequired,
-  infoLinks: PropTypes.arrayOf(NavLinkProp),
-  authLinks: PropTypes.arrayOf(NavLinkProp),
-  nonAuthLinks: PropTypes.arrayOf(NavLinkProp)
-}
+NavigationLinks.propTypes = NavigationLinksProps
 
 const NavLinks = styled.section`
   display: grid;

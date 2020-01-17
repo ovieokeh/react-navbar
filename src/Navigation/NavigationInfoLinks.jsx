@@ -5,12 +5,7 @@ import {
   NavItemsGroupLinks,
   NavItemsGroupLinksLink
 } from './shared'
-import { NavLinkProp } from '../propTypes'
-
-NavigationWithAuth.propTypes = {
-  links: PropTypes.arrayOf(NavLinkProp),
-  mainColor: PropTypes.string
-}
+import { NavigationChildProps } from '../propTypes'
 
 const NavigationInfoLinks = ({ links, mainColor }) => (
   <NavItemsGroup data-type="info">
@@ -23,5 +18,7 @@ const NavigationInfoLinks = ({ links, mainColor }) => (
     ))}
   </NavItemsGroup>
 )
+
+NavigationWithAuth.propTypes = NavigationChildProps
 
 export default NavigationInfoLinks

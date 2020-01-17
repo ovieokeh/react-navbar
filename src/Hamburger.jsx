@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
+
+import { HamburgerProps } from './propTypes'
 
 const Hamburger = ({ mainColor, barColor, onToggle }) => {
   const onClick = e => {
@@ -19,11 +20,7 @@ const Hamburger = ({ mainColor, barColor, onToggle }) => {
   )
 }
 
-Hamburger.propTypes = {
-  barColor: PropTypes.string.isRequired,
-  mainColor: PropTypes.string.isRequired,
-  onToggle: PropTypes.func
-}
+Hamburger.propTypes = HamburgerProps
 
 const NavHamburger = styled.button`
   display: none;
