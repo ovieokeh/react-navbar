@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import {
   NavItemsGroup,
   NavItemsGroupLinks,
   NavItemsGroupLinksLink
 } from './shared'
+import ThemeContext from '../styleContext'
 import * as Props from '../propTypes'
 
 const NavigationWithAuth = ({ links, mainColor }) => (
@@ -35,12 +36,15 @@ const NavigationNonAuth = ({ links, mainColor }) => (
 
 NavigationNonAuth.propTypes = Props.NavigationChildProps
 
-const NavigationAuthLinks = ({ isAuth, authLinks, nonAuthLinks, mainColor }) =>
-  isAuth ? (
-    <NavigationWithAuth mainColor={mainColor} links={authLinks} />
+const NavigationAuthLinks = ({ isAuth, authLinks, nonAuthLinks }) => {
+  const theme = useContext(ThemeContext)
+
+  return isAuth ? (
+    <NavigationWithAuth mainColor={theme.mainColor} links={authLinks} />
   ) : (
-    <NavigationNonAuth mainColor={mainColor} links={nonAuthLinks} />
+    <NavigationNonAuth mainColor={theme.mainColor} links={nonAuthLinks} />
   )
+}
 
 NavigationAuthLinks.propTypes = Props.NavigationAuthLinksProps
 

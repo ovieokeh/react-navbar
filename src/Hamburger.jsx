@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 
+import ThemeContext from './styleContext'
 import { HamburgerProps } from './propTypes'
 
-const Hamburger = ({ mainColor, barColor, onToggle }) => {
+const Hamburger = ({ onToggle }) => {
+  const theme = useContext(ThemeContext)
+
   const onClick = e => {
     const btn = e.target
 
@@ -12,10 +15,14 @@ const Hamburger = ({ mainColor, barColor, onToggle }) => {
   }
 
   return (
-    <NavHamburger type="button" onClick={onClick}>
-      <Lines data-backgroundcolor={mainColor} data-barcolor={barColor} />
-      <Lines data-backgroundcolor={mainColor} data-barcolor={barColor} />
-      <Lines data-backgroundcolor={mainColor} data-barcolor={barColor} />
+    <NavHamburger
+      type="button"
+      onClick={onClick}
+      data-backgroundcolor={theme.mainColor}
+    >
+      <Bars data-barcolor={theme.mainColor} />
+      <Bars data-barcolor={theme.mainColor} />
+      <Bars data-barcolor={theme.mainColor} />
     </NavHamburger>
   )
 }
@@ -70,7 +77,7 @@ const NavHamburger = styled.button`
   }
 `
 
-const Lines = styled.span`
+const Bars = styled.span`
   display: block;
   position: absolute;
   height: 3px;

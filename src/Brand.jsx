@@ -1,15 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 
+import ThemeContext from './styleContext'
 import { NavigationBrandProps } from './propTypes'
 
-const NavigationBrand = ({ route, brand, color }) => (
-  <Brand>
-    <BrandLink href={route} color={color}>
-      {brand}
-    </BrandLink>
-  </Brand>
-)
+const NavigationBrand = ({ route, brand }) => {
+  const theme = useContext(ThemeContext)
+
+  return (
+    <Brand>
+      <BrandLink href={route} color={theme.mainColor}>
+        {brand}
+      </BrandLink>
+    </Brand>
+  )
+}
 
 NavigationBrand.propTypes = NavigationBrandProps
 

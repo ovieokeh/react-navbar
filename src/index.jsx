@@ -26,20 +26,15 @@ const Navbar = props => {
         color={theme.mainColor}
         ref={navRef}
       >
-        <Brand route="/" brand={props.brand} color={theme.mainColor} />
+        <Brand route="/" brand={props.brand} />
 
-        <Hamburger
-          mainColor={theme.mainColor}
-          barColor={theme.linkColor}
-          onToggle={onMenuClick}
-        />
+        <Hamburger onToggle={onMenuClick} />
 
         <Links
           isOpen={isToggled}
           infoLinks={props.infoLinks}
           authLinks={props.authLinks}
           nonAuthLinks={props.nonAuthLinks}
-          mainColor={theme.mainColor}
         />
       </Nav>
     </ThemeContext.Provider>

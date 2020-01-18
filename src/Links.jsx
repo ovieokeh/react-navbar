@@ -1,29 +1,27 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 
 import NavigationInfoLinks from './Navigation/NavigationInfoLinks'
 import NavigationAuthLinks from './Navigation/NavigationAuthLinks'
 
+import ThemeContext from './styleContext'
 import { NavigationLinksProps } from './propTypes'
 
-const NavigationLinks = ({
-  isOpen,
-  infoLinks,
-  authLinks,
-  nonAuthLinks,
-  mainColor
-}) => (
-  <NavLinks data-isopen={isOpen}>
-    <NavigationInfoLinks links={infoLinks} mainColor={mainColor} />
+const NavigationLinks = ({ isOpen, infoLinks, authLinks, nonAuthLinks }) => {
+  const theme = useContext(ThemeContext)
 
-    <NavigationAuthLinks
-      isAuth={true}
-      authLinks={authLinks}
-      nonAuthLinks={nonAuthLinks}
-      mainColor={mainColor}
-    />
-  </NavLinks>
-)
+  return (
+    <NavLinks data-isopen={isOpen}>
+      <NavigationInfoLinks links={infoLinks} mainColor={theme.mainColor} />
+
+      <NavigationAuthLinks
+        isAuth={true}
+        authLinks={authLinks}
+        nonAuthLinks={nonAuthLinks}
+      />
+    </NavLinks>
+  )
+}
 
 NavigationLinks.propTypes = NavigationLinksProps
 
@@ -52,7 +50,8 @@ const NavLinks = styled.section`
       height: 55px;
       background-color: transparent;
       position: fixed;
-      width: 50.5%;
+      width: 50%;
+      padding: 0 2em;
       right: ${props => (props['data-isopen'] ? 0 : '-999px')};
       top: 0;
       box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.1);

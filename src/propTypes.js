@@ -9,8 +9,7 @@ export const NavLinkProp = PropTypes.shape({
 export const NavigationAuthLinksProps = {
   isAuth: PropTypes.bool,
   authLinks: PropTypes.arrayOf(NavLinkProp),
-  nonAuthLinks: PropTypes.arrayOf(NavLinkProp),
-  mainColor: PropTypes.string
+  nonAuthLinks: PropTypes.arrayOf(NavLinkProp)
 }
 
 export const NavigationChildProps = {
@@ -20,19 +19,15 @@ export const NavigationChildProps = {
 
 export const NavigationBrandProps = {
   route: PropTypes.string.isRequired,
-  brand: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired
+  brand: PropTypes.string.isRequired
 }
 
 export const HamburgerProps = {
-  barColor: PropTypes.string.isRequired,
-  mainColor: PropTypes.string.isRequired,
   onToggle: PropTypes.func
 }
 
 export const NavigationLinksProps = {
   isOpen: PropTypes.bool.isRequired,
-  mainColor: PropTypes.string.isRequired,
   infoLinks: PropTypes.arrayOf(NavLinkProp),
   authLinks: PropTypes.arrayOf(NavLinkProp),
   nonAuthLinks: PropTypes.arrayOf(NavLinkProp)
