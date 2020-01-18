@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Navbar from '../src/index'
+import Navbar from '../lib/index'
 
 export default { title: 'Navbar' }
 

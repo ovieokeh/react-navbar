@@ -1,4 +1,7 @@
 src
 demo
 .babelrc
+.storybook
+.gitignore
+.prettierrc
 webpack.config.js
