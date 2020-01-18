@@ -3,3 +3,5 @@ node_modules
 .npm
 .eslintcache
 .cache
+
+webpack.config.js
