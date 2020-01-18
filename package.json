@@ -2,12 +2,11 @@
   "name": "@ovie/react-navbar",
   "version": "1.0.0",
   "description": "A responsive react navbar component",
+  "source": "src/index.js",
   "main": "lib/index.js",
   "umd:main": "lib/index.umd.js",
-  "module": "lib/index.m.js",
-  "source": "src/index.jsx",
   "scripts": {
-    "build": "microbundle",
+    "build": "microbundle --no-sourcemap",
     "dev": "microbundle watch",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
