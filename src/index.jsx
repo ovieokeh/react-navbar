@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import Brand from './Brand'
 import Hamburger from './Hamburger'
-import Links from './Links'
+import NavLinks from './Links'
 
 import ThemeContext, { defaultTheme } from './styleContext'
 import { NavbarProps } from './propTypes'
@@ -23,6 +23,7 @@ const Navbar = props => {
       <Nav
         data-background={theme.backgroundColor}
         data-hidden={isHidden}
+        data-font-family={theme.fontFamily}
         color={theme.mainColor}
         ref={navRef}
       >
@@ -30,11 +31,10 @@ const Navbar = props => {
 
         <Hamburger onToggle={onMenuClick} />
 
-        <Links
+        <NavLinks
           isOpen={isToggled}
-          infoLinks={props.infoLinks}
-          authLinks={props.authLinks}
-          nonAuthLinks={props.nonAuthLinks}
+          leftLinks={props.leftLinks}
+          rightLinks={props.rightLinks}
         />
       </Nav>
     </ThemeContext.Provider>
@@ -47,7 +47,7 @@ const Nav = styled.nav`
   display: flex;
   align-items: center;
   background-color: ${props => props['data-background']};
-  font-family: 'Work Sans', sans-serif;
+  font-family: ${props => props['data-font-family']}, sans-serif;
   height: 55px;
   padding: 0 2em;
   position: fixed;

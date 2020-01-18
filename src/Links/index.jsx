@@ -1,31 +1,20 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
-import NavigationInfoLinks from './Navigation/NavigationInfoLinks'
-import NavigationAuthLinks from './Navigation/NavigationAuthLinks'
+import NavSection from './NavSection'
 
-import ThemeContext from './styleContext'
-import { NavigationLinksProps } from './propTypes'
+import { NavLinksProps } from '../propTypes'
 
-const NavigationLinks = ({ isOpen, infoLinks, authLinks, nonAuthLinks }) => {
-  const theme = useContext(ThemeContext)
+const NavLinks = ({ isOpen, leftLinks, rightLinks }) => (
+  <Links data-isopen={isOpen}>
+    <NavSection position="left" links={leftLinks} />
+    <NavSection position="right" links={rightLinks} />
+  </Links>
+)
 
-  return (
-    <NavLinks data-isopen={isOpen}>
-      <NavigationInfoLinks links={infoLinks} mainColor={theme.mainColor} />
+NavLinks.propTypes = NavLinksProps
 
-      <NavigationAuthLinks
-        isAuth={true}
-        authLinks={authLinks}
-        nonAuthLinks={nonAuthLinks}
-      />
-    </NavLinks>
-  )
-}
-
-NavigationLinks.propTypes = NavigationLinksProps
-
-const NavLinks = styled.section`
+const Links = styled.section`
   display: grid;
   grid-template-columns: 60% 40%;
   width: 100%;
@@ -60,4 +49,4 @@ const NavLinks = styled.section`
   }
 `
 
-export default NavigationLinks
+export default NavLinks

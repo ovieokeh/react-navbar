@@ -1,14 +1,15 @@
 import styled from 'styled-components'
 
-export const NavItemsGroup = styled.ul`
+export const NavLinks = styled.ul`
   display: flex;
   justify-content: space-evenly;
   justify-self: ${props =>
-    props['data-type'] === 'info' ? 'flex-start' : 'flex-end'};
+    props['data-position'] === 'left' ? 'flex-start' : 'flex-end'};
   width: 100%;
   margin: 0;
   padding: 0.5em 0;
-  max-width: ${props => (props['data-type'] === 'info' ? '400px' : '250px')};
+  max-width: ${props =>
+    props['data-position'] === 'left' ? '400px' : '250px'};
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -17,7 +18,7 @@ export const NavItemsGroup = styled.ul`
   }
 `
 
-export const NavItemsGroupLinks = styled.li`
+export const LinkContainer = styled.li`
   display: inline-flex;
   align-items: center;
   list-style: none;
@@ -28,7 +29,7 @@ export const NavItemsGroupLinks = styled.li`
   }
 `
 
-export const NavItemsGroupLinksLink = styled.a`
+export const Link = styled.a`
   text-decoration: none;
   color: ${props => props.color};
   transition: opacity 100ms ease-in;
