@@ -1,10 +1,14 @@
 {
-  "name": "react-responsive-navbar",
+  "name": "@ovie/react-navbar",
   "version": "1.0.0",
   "description": "A responsive react navbar component",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "umd:main": "lib/index.umd.js",
+  "module": "lib/index.m.js",
+  "source": "src/index.jsx",
   "scripts": {
-    "build": "webpack",
+    "build": "microbundle",
+    "dev": "microbundle watch",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -14,6 +18,7 @@
   },
   "keywords": [
     "navbar",
+    "navigation",
     "mobile",
     "responsive",
     "react"
@@ -25,23 +30,16 @@
   },
   "homepage": "https://github.com/ovieokeh/react-responsive-nav#readme",
   "peerDependencies": {
-    "prop-types": "^15.6.0",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "styled-components": "^5.0.0"
+    "react": "^16.8.6",
+    "styled-components": ">= 3"
+  },
+  "dependencies": {
+    "react": "^16.8.6"
   },
   "devDependencies": {
     "@storybook/react": "^5.3.6",
-    "babel-core": "^6.21.0",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.16.0",
-    "babel-preset-stage-0": "^6.24.1",
+    "microbundle": "^0.11.0",
     "prop-types": "^15.6.0",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "styled-components": "^5.0.0",
-    "webpack": "^4.5.0",
-    "webpack-cli": "^3.2.1"
+    "styled-components": "^5.0.0"
   }
 }

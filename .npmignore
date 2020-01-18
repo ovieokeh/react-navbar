@@ -4,4 +4,3 @@ demo
 .storybook
 .gitignore
 .prettierrc
-webpack.config.js

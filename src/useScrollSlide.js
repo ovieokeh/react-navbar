@@ -22,7 +22,7 @@ const useScrollSlide = navRef => {
     window && window.addEventListener('scroll', handleScroll)
 
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [nav, prevPos])
+  }, [nav, prevPos, isHidden])
 
   return isHidden
 }
