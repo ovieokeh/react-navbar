@@ -3,5 +3,5 @@ node_modules
 .npm
 .eslintcache
 .cache
+dist
 
-webpack.config.js

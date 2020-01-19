@@ -1,0 +1,85 @@
+.navLinks {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  width: 100%;
+}
+
+.navLinksGroup {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  margin: 0;
+  padding: 0.5em 0;
+}
+
+.navLinksGroupLeft {
+  composes: navLinksGroup;
+  max-width: 400px;
+}
+
+.navLinksGroupRight {
+  composes: navLinksGroup;
+  max-width: 250px;
+  justify-self: flex-end;
+}
+
+.navLink {
+  text-decoration: none;
+  color: var(--link-color);
+  transition: opacity 100ms ease-in;
+}
+.navLink:hover {
+  opacity: 0.6;
+}
+
+.navLink.main {
+  padding: 0 1em;
+  color: var(--background-color);
+  border: 1px solid var(--main-color);
+  background-color: var(--main-color);
+  border-radius: 3px;
+  transition: background-color 200ms ease-in;
+}
+.navLink.main:hover {
+  background-color: var(--background-color);
+  color: var(--main-color);
+  transition: background-color 200ms ease-out;
+}
+
+@media (max-width: 768px) {
+  .navLinks {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: var(--height);
+    right: -999px;
+    bottom: 0;
+    width: var(--slider-width);
+    padding: 0 2em;
+    background-color: var(--background-color);
+    transition: right 300ms ease-in;
+    z-index: 100;
+  }
+
+  .navLinksShow {
+    composes: navLinks;
+    right: 0;
+    transition: right 300ms ease-out;
+  }
+
+  .navLink {
+    font-size: 1em;
+    margin: 0.5em 0;
+  }
+
+  .navLinksGroup {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .navLinksGroupLeft,
+  .navLinksGroupRight {
+    max-width: unset;
+    justify-self: unset;
+  }
+}

@@ -1,0 +1,72 @@
+.hidden {
+  display: none;
+  background-color: transparent;
+  width: 28px;
+  height: 18px;
+  transform: rotate(0deg);
+  transition: 300ms ease-in-out;
+  border: none;
+  outline: transparent;
+  cursor: pointer;
+  z-index: 300;
+}
+
+.bar {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background-color: var(--main-color);
+  border-radius: 12px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transform-origin: left center;
+  transition: 300ms ease-in-out;
+  pointer-events: none;
+}
+
+.bar:nth-child(1) {
+  top: 0px;
+}
+
+.bar:nth-child(2) {
+  top: 9px;
+}
+
+.bar:nth-child(3) {
+  top: 18px;
+}
+
+.show {
+  composes: hidden;
+}
+
+.barActive {
+  composes: bar;
+  background: var(--main-color);
+  opacity: 0.6;
+}
+
+.barActive:nth-child(1) {
+  transform: rotate(45deg);
+  top: 0;
+  left: 8px;
+}
+
+.barActive:nth-child(2) {
+  width: 0%;
+  opacity: 0;
+}
+
+.barActive:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 20px;
+  left: 8px;
+}
+
+@media (max-width: 768px) {
+  .hidden {
+    display: block;
+  }
+}
