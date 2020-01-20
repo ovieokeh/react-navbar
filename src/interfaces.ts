@@ -1,20 +1,20 @@
 export interface ThemeProps {
-  backgroundColor: string
-  mainColor: string
-  shadowColor: string
-  linkColor: string
-  height: string
-  sliderWidth: string
-  padding: string
+  backgroundColor?: string
+  mainColor?: string
+  shadowColor?: string
+  linkColor?: string
+  height?: string
+  sliderWidth?: string
+  padding?: string
 }
 
 export interface NavLinkProp {
   to: string
   text: string
-  title: string
+  title?: string
 }
 
-export interface NavigationBrandProps {
+export interface NavBrandProps {
   route: string
   brand: string
 }
@@ -32,7 +32,7 @@ export interface NavLinksProps {
 
 export interface NavbarProps {
   brand: string
-  leftLinks: NavLinkProp[]
-  rightLinks: NavLinkProp[]
-  theme: ThemeProps
+  leftLinks?: NavLinkProp[]
+  rightLinks?: NavLinkProp[]
+  theme?: ThemeProps
 }

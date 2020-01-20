@@ -84,7 +84,7 @@ var NavLinks = function (_a) {
         React.createElement("span", { className: styles$2.navLinksGroupRight }, renderLinks(rightLinks))));
 };
 
-var createContext = React.createContext, useEffect = React.useEffect;
+var useEffect = React.useEffect;
 var themeMapping = {
     mainColor: '--main-color',
     backgroundColor: '--background-color',
@@ -101,12 +101,10 @@ var defaultTheme = {
     shadowColor: '#4e4e4e',
     linkColor: '#4e4e4e',
     height: '55px',
-    sliderWidth: '70%',
+    sliderWidth: '90%',
     padding: '0 2em'
 };
-var ThemeContext = createContext(defaultTheme);
 var useTheme = function (theme) {
-    if (theme === void 0) { theme = defaultTheme; }
     return useEffect(function () {
         var nav = document.querySelector('nav');
         if (nav) {
@@ -135,23 +133,23 @@ var useScrollSlide = function () {
     return isHidden;
 };
 
-var css$3 = ".styles_nav__2rwxh {\n  display: flex;\n  align-items: center;\n  background-color: var(--background-color);\n  font-family: inherit;\n  height: var(--height);\n  padding: var(--padding);\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);\n  transition: top 200ms ease-in;\n  z-index: 2;\n}\n\n.styles_navHidden__1KJ2w {\n  top: -55px;\n  transition: top 300ms ease-out;\n}\n\n@media (max-width: 768px) {\n  .styles_nav__2rwxh {\n    justify-content: space-between;\n  }\n}\n";
+var css$3 = ".styles_nav__2rwxh {\n  --main-color: #333333;\n  --background-color: #ffffff;\n  --shadow-color: #4e4e4e;\n  --link-color: #4e4e4e;\n  --height: 55px;\n  --padding: 0 2em;\n  --slider-width: 100%;\n\n  display: flex;\n  align-items: center;\n  background-color: var(--background-color);\n  font-family: inherit;\n  height: var(--height);\n  padding: var(--padding);\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);\n  transition: top 200ms ease-in;\n  z-index: 2;\n}\n\n.styles_navHidden__1KJ2w {\n  top: -55px;\n  transition: top 300ms ease-out;\n}\n\n@media (max-width: 768px) {\n  .styles_nav__2rwxh {\n    justify-content: space-between;\n  }\n}\n";
 var styles$3 = {"nav":"styles_nav__2rwxh","navHidden":"styles_navHidden__1KJ2w styles_nav__2rwxh"};
 styleInject(css$3);
 
 var useState = React.useState;
 var Navbar = function (_a) {
-    var brand = _a.brand, leftLinks = _a.leftLinks, rightLinks = _a.rightLinks, theme = _a.theme;
-    var _b = useState(false), isToggled = _b[0], toggle = _b[1];
+    var brand = _a.brand, _b = _a.leftLinks, leftLinks = _b === void 0 ? [] : _b, _c = _a.rightLinks, rightLinks = _c === void 0 ? [] : _c, _d = _a.theme, theme = _d === void 0 ? defaultTheme : _d;
+    var _e = useState(false), isToggled = _e[0], toggle = _e[1];
     var isHidden = useScrollSlide();
     useTheme(theme);
     var navClassName = isHidden ? 'navHidden' : 'nav';
+    // const shouldShowHamburger = !!(leftLinks.length || rightLinks.length)
     var onHamburgerClick = function () { return toggle(!isToggled); };
-    return (React.createElement(ThemeContext.Provider, { value: defaultTheme },
-        React.createElement("nav", { className: styles$3[navClassName], role: "navigation" },
-            React.createElement(NavigationBrand, { route: "/", brand: brand }),
-            React.createElement(Hamburger, { isToggled: isToggled, onToggle: onHamburgerClick }),
-            React.createElement(NavLinks, { isOpen: isToggled, leftLinks: leftLinks, rightLinks: rightLinks }))));
+    return (React.createElement("nav", { className: styles$3[navClassName], role: "navigation" },
+        React.createElement(NavigationBrand, { route: "/", brand: brand }),
+        React.createElement(Hamburger, { isToggled: isToggled, onToggle: onHamburgerClick }),
+        React.createElement(NavLinks, { isOpen: isToggled, leftLinks: leftLinks, rightLinks: rightLinks })));
 };
 
 exports.default = Navbar;

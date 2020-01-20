@@ -1,4 +1,4 @@
 import * as React from 'react';
-import { NavigationBrandProps } from '../interfaces';
-declare const NavigationBrand: React.FC<NavigationBrandProps>;
+import { NavBrandProps } from '../interfaces';
+declare const NavigationBrand: React.FC<NavBrandProps>;
 export default NavigationBrand;

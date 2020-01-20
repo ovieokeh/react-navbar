@@ -1,4 +1,12 @@
 .nav {
+  --main-color: #333333;
+  --background-color: #ffffff;
+  --shadow-color: #4e4e4e;
+  --link-color: #4e4e4e;
+  --height: 55px;
+  --padding: 0 2em;
+  --slider-width: 100%;
+
   display: flex;
   align-items: center;
   background-color: var(--background-color);

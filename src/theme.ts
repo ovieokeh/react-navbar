@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { ThemeProps } from './interfaces'
 
-const { createContext, useEffect } = React
+const { useEffect } = React
 
 export const themeMapping = {
   mainColor: '--main-color',
@@ -21,13 +21,11 @@ export const defaultTheme: ThemeProps = {
   shadowColor: '#4e4e4e',
   linkColor: '#4e4e4e',
   height: '55px',
-  sliderWidth: '70%',
+  sliderWidth: '90%',
   padding: '0 2em'
 }
 
-const ThemeContext = createContext<ThemeProps>(defaultTheme)
-
-export const useTheme = (theme: ThemeProps = defaultTheme) =>
+export const useTheme = (theme: ThemeProps) =>
   useEffect(() => {
     const nav = document.querySelector('nav')
 
@@ -37,5 +35,3 @@ export const useTheme = (theme: ThemeProps = defaultTheme) =>
       })
     }
   }, [])
-
-export default ThemeContext
