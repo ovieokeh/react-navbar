@@ -11,6 +11,11 @@ const useScrollSlide = () => {
       const curPos = window.pageYOffset
       const isScrollingDown = prevPos > curPos
 
+      if (curPos <= 55) {
+        setHidden(false)
+        return
+      }
+
       isScrollingDown && isHidden && setHidden(false)
 
       !isScrollingDown && !isHidden && setHidden(true)
