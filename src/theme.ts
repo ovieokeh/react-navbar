@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { ThemeProps } from './interfaces'
+import * as I from './interfaces'
 
 const { useEffect } = React
 
@@ -15,7 +15,7 @@ export const themeMapping = {
   padding: '--padding'
 }
 
-export const defaultTheme: ThemeProps = {
+export const defaultTheme: I.ThemeProps = {
   mainColor: '#333333',
   backgroundColor: '#ffffff',
   shadowColor: '#4e4e4e',
@@ -25,7 +25,7 @@ export const defaultTheme: ThemeProps = {
   padding: '0 2em'
 }
 
-export const useTheme = (theme: ThemeProps) =>
+export const useTheme = (theme: I.ThemeProps) =>
   useEffect(() => {
     const nav = document.querySelector('nav')
 
@@ -34,4 +34,4 @@ export const useTheme = (theme: ThemeProps) =>
         nav.style.setProperty(themeMapping[prop], theme[prop])
       })
     }
-  }, [])
+  }, [theme])

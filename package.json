@@ -1,5 +1,5 @@
 {
-  "name": "@ovieokeh/react-navbar",
+  "name": "@ovie/react-navbar",
   "version": "1.0.4",
   "description": "A responsive react navbar component",
   "author": "ovieokeh",
@@ -11,9 +11,6 @@
   "engines": {
     "node": ">=8",
     "npm": ">=5"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
   },
   "scripts": {
     "build": "rollup -c",

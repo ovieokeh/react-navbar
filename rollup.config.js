@@ -28,8 +28,8 @@ export default {
     }),
     url(),
     resolve(),
-    typescript({ module: 'CommonJS' }),
-    commonjs({ extensions: ['.js', '.ts'] })
+    typescript(),
+    commonjs()
   ],
   external: ['react', 'react-dom']
 }

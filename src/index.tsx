@@ -6,18 +6,13 @@ import NavLinks from './NavLinks'
 
 import { defaultTheme, useTheme } from './theme'
 import useScrollSlide from './useScrollSlide'
-import {
-  NavbarProps,
-  ThemeProps,
-  NavBrandProps,
-  NavLinkProp
-} from './interfaces'
+import * as I from './interfaces'
 
 import styles from './styles.css'
 
 const { useState } = React
 
-const Navbar: React.FC<NavbarProps> = ({
+const Navbar: React.FC<I.NavbarProps> = ({
   brand,
   leftLinks = [],
   rightLinks = [],
@@ -49,5 +44,4 @@ const Navbar: React.FC<NavbarProps> = ({
   )
 }
 
-export { NavbarProps, ThemeProps, NavBrandProps, NavLinkProp }
 export default Navbar
