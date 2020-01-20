@@ -1,7 +1,6 @@
 node_modules
+dist
 
 .npm
 .eslintcache
 .cache
-dist
-
