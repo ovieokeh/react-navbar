@@ -1,22 +1,11 @@
 export interface ThemeProps {
   backgroundColor?: string
   mainColor?: string
+  menuBgColor?: string
   shadowColor?: string
-  linkColor?: string
   height?: string
   sliderWidth?: string
   padding?: string
-}
-
-export interface NavLinkProp {
-  to: string
-  text: string
-  title?: string
-}
-
-export interface NavBrandProps {
-  route: string
-  brand: string
 }
 
 export interface HamburgerProps {
@@ -26,13 +15,13 @@ export interface HamburgerProps {
 
 export interface NavLinksProps {
   isOpen: boolean
-  leftLinks: NavLinkProp[]
-  rightLinks: NavLinkProp[]
+  leftLinks?: JSX.Element
+  rightLinks?: JSX.Element
 }
 
 export interface NavbarProps {
-  brand: string
-  leftLinks?: NavLinkProp[]
-  rightLinks?: NavLinkProp[]
+  brand: JSX.Element
+  leftLinks?: JSX.Element
+  rightLinks?: JSX.Element
   theme?: ThemeProps
 }

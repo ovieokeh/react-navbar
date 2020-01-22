@@ -1,6 +1,5 @@
 import * as React from 'react'
 
-import NavBrand from './NavBrand'
 import Hamburger from './Hamburger'
 import NavLinks from './NavLinks'
 
@@ -10,26 +9,27 @@ import * as I from './interfaces'
 
 import styles from './styles.css'
 
-const { useState } = React
+const { useState, useRef } = React
 
 const Navbar: React.FC<I.NavbarProps> = ({
   brand,
-  leftLinks = [],
-  rightLinks = [],
+  leftLinks,
+  rightLinks,
   theme = defaultTheme
 }) => {
   const [isToggled, toggle] = useState(false)
   const isHidden = useScrollSlide()
-  useTheme(theme)
+  const navRef = useRef(null)
+  useTheme(navRef, theme)
 
   const navClassName = isHidden ? 'navHidden' : 'nav'
-  const shouldShowHamburger = !!(leftLinks.length || rightLinks.length)
+  const shouldShowHamburger = leftLinks || rightLinks
 
   const onHamburgerClick = () => toggle(!isToggled)
 
   return (
-    <nav className={styles[navClassName]} role="navigation">
-      <NavBrand route="/" brand={brand} />
+    <nav className={styles[navClassName]} ref={navRef} role="navigation">
+      {brand}
 
       {shouldShowHamburger && (
         <Hamburger isToggled={isToggled} onToggle={onHamburgerClick} />

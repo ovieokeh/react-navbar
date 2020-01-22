@@ -14,37 +14,30 @@ npm install --save @ovieokeh/react-navbar
 You can customise the look and content of the navbar by passing in the following props:
 
 ### Navbar Props
-| name       | type       | default value | isRequired |
-| ---------- | ---------- | ------------- | ---------- |
-| brand      | string     |               | true       |
-| leftLinks  | NavLinks   |               | false      |
-| rightLinks | NavLinks   |               | false      |
-| theme      | ThemeProps |               | false      |
-
-### NavLinks
-| prop  | type   |
-| ----- | ------ |
-| to    | string |
-| text  | string |
-| title | string |
+| name       | type        | default value | isRequired |
+| ---------- | ----------- | ------------- | ---------- |
+| brand      | JSX.Element |               | true       |
+| leftLinks  | JSX.Element |               | false      |
+| rightLinks | JSX.Element |               | false      |
+| theme      | ThemeProps  |               | false      |
 
 
 ### ThemeProps
 | prop            | type   | default value |
 | --------------- | ------ | ------------- |
-| backgroundColor | string | "#ffffff"     |
 | mainColor       | string | "#333333"     |
+| backgroundColor | string | "#ffffff"     |
 | shadowColor     | string | "#4e4e4e"     |
 | linkColor       | string | "#4e4e4e"     |
 | height          | string | "55px"        |
-| sliderWidth     | string | "70%"         |
+| sliderWidth     | string | "100%"        |
 | padding         | string | "0 2em"       |
 
 ## Usage
 
 ```tsx
 import * as React from 'react'
-
+import { Link } from 'gatsby'
 import Navbar from 'react-navbar'
 
 const navTheme = {
@@ -52,26 +45,30 @@ const navTheme = {
   backgroundColor: '#ffffff',
   shadowColor: '#4e4e4e',
   linkColor: 'red',
-  fontFamily: 'Work Sans',
-  height: '55px',
-  padding: '0 2em'
+  height: '55px'
 }
 
-const leftLinks = [
-  { text: 'Our Plans', to: '/plans' },
-  { text: 'How It Works', to: '/faq' },
-  { text: 'Menu', to: '/menu' }
-]
+const navBrand = <Link to={ROUTES.HOME}>Base Corp.</Link>
 
-const rightLinks = [
-  { text: 'Get Started', to: '/sign-up' },
-  { text: 'Sign In', to: '/sign-in' }
-]
+const leftLinks = (
+  <span>
+    <Link to={ROUTES.PLANS}>Our Plans</Link>
+    <Link to={ROUTES.FAQ}>How It Works</Link>
+    <Link to={ROUTES.MENU}>Our Menus</Link>
+  </span>
+)
+
+const rightLinks = (
+  <span>
+    <a href={ROUTES.SIGNUP}>Get Started</a>
+    <a href={ROUTES.SIGNIN}>Sign In</a>
+  </span>
+)
 
 const Example = () => {
   return (
     <Navbar
-      brand="Base Corp."
+      brand={navBrand}
       theme={navTheme}
       leftLinks={leftLinks}
       rightLinks={rightLinks}
@@ -82,4 +79,4 @@ const Example = () => {
 
 ## License
 
-Apache-2.0 © [ovieokeh](https://github.com/ovieokeh)
+Apache-2.0 © [Ovie Okeh](https://github.com/ovieokeh)

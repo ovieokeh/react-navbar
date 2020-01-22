@@ -1,49 +1,34 @@
 .navLinks {
-  display: grid;
-  grid-template-columns: 60% 40%;
+  display: flex;
   width: 100%;
 }
 
 .navLinksGroup {
   display: flex;
-  justify-content: space-evenly;
   width: 100%;
   margin: 0;
-  padding: 0.5em 0;
+  padding: 0.5em;
+}
+
+.navLinksGroup a {
+  text-decoration: none;
+  color: var(--link-color);
+  margin: 0 0.5em;
+  transition: opacity 100ms ease-in;
+}
+.navLinksGroup a:hover {
+  opacity: 0.6;
 }
 
 .navLinksGroupLeft {
   composes: navLinksGroup;
-  max-width: 400px;
+  max-width: 600px;
 }
 
 .navLinksGroupRight {
   composes: navLinksGroup;
-  max-width: 250px;
-  justify-self: flex-end;
-}
-
-.navLink {
-  text-decoration: none;
-  color: var(--link-color);
-  transition: opacity 100ms ease-in;
-}
-.navLink:hover {
-  opacity: 0.6;
-}
-
-.navLink.main {
-  padding: 0 1em;
-  color: var(--background-color);
-  border: 1px solid var(--main-color);
-  background-color: var(--main-color);
-  border-radius: 3px;
-  transition: background-color 200ms ease-in;
-}
-.navLink.main:hover {
-  background-color: var(--background-color);
-  color: var(--main-color);
-  transition: background-color 200ms ease-out;
+  max-width: 400px;
+  justify-content: flex-end;
 }
 
 @media (max-width: 768px) {
@@ -52,24 +37,28 @@
     flex-direction: column;
     position: fixed;
     top: var(--height);
-    right: -999px;
+    right: 0;
     bottom: 0;
-    width: var(--slider-width);
+    width: 0;
+    height: 0;
     padding: 0 2em;
     background-color: var(--background-color);
-    transition: right 300ms ease-in;
-    z-index: 100;
+    background-color: var(--menu-bg-color, #f2f2f2);
+    transition: height 200ms ease-in, width 200ms ease-in,
+      border-radius ease-in 200ms;
+    border-bottom-left-radius: 150%;
+    overflow: hidden;
   }
 
   .navLinksShow {
     composes: navLinks;
-    right: 0;
-    transition: right 300ms ease-out;
-  }
 
-  .navLink {
-    font-size: 1em;
-    margin: 0.5em 0;
+    width: 100vw;
+    height: calc(100vh - var(--height));
+    border-bottom-left-radius: 0;
+
+    transition: height 300ms ease-out, width 300ms ease-out,
+      border-radius ease-out 300ms;
   }
 
   .navLinksGroup {
@@ -77,9 +66,13 @@
     align-items: flex-end;
   }
 
+  .navLinksGroup a {
+    font-size: 1.1em;
+    margin: 0.5em 0;
+  }
+
   .navLinksGroupLeft,
   .navLinksGroupRight {
     max-width: unset;
-    justify-self: unset;
   }
 }

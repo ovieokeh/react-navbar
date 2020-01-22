@@ -1,8 +1,7 @@
 import * as React from 'react'
 
-import NavLink from './NavLink'
 import useNoScroll from './useNoScroll'
-import { NavLinksProps, NavLinkProp } from '../interfaces'
+import { NavLinksProps } from '../interfaces'
 
 import styles from './navlinks.css'
 
@@ -15,16 +14,11 @@ const NavLinks: React.FC<NavLinksProps> = ({
 
   useNoScroll(isOpen)
 
-  const renderLinks = (links: NavLinkProp[]) =>
-    links.map(link => <NavLink key={link.to} link={link} />)
-
   return (
     <div className={styles[className]}>
-      <span className={styles.navLinksGroupLeft}>{renderLinks(leftLinks)}</span>
+      <span className={styles.navLinksGroupLeft}>{leftLinks}</span>
 
-      <span className={styles.navLinksGroupRight}>
-        {renderLinks(rightLinks)}
-      </span>
+      <span className={styles.navLinksGroupRight}>{rightLinks}</span>
     </div>
   )
 }
