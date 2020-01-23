@@ -1,10 +1,18 @@
 import * as React from 'react'
 
-import * as I from './interfaces'
-
 const { useEffect } = React
 
-export const themeMapping: I.ThemeProps = {
+export interface ThemeProps {
+  backgroundColor?: string
+  mainColor?: string
+  menuBgColor?: string
+  shadowColor?: string
+  height?: string
+  sliderWidth?: string
+  padding?: string
+}
+
+export const themeMapping: ThemeProps = {
   mainColor: '--main-color',
   backgroundColor: '--background-color',
   menuBgColor: '--menu-bg-color',
@@ -14,7 +22,7 @@ export const themeMapping: I.ThemeProps = {
   padding: '--padding'
 }
 
-export const defaultTheme: I.ThemeProps = {
+export const defaultTheme: ThemeProps = {
   mainColor: '#333333',
   backgroundColor: '#ffffff',
   shadowColor: '#4e4e4e',
@@ -25,7 +33,7 @@ export const defaultTheme: I.ThemeProps = {
 
 export const useTheme = (
   navRef: React.RefObject<HTMLElement>,
-  theme: I.ThemeProps
+  theme: ThemeProps
 ) =>
   useEffect(() => {
     const nav = navRef.current

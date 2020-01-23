@@ -3,32 +3,45 @@ import * as React from 'react'
 import Hamburger from './Hamburger'
 import NavLinks from './NavLinks'
 
-import { defaultTheme, useTheme } from './theme'
-import useScrollSlide from './useScrollSlide'
-import * as I from './interfaces'
-
+import { defaultTheme, useTheme, ThemeProps } from './theme'
+import { useScrollSlide, computeClass } from './utils'
 import styles from './styles.css'
 
 const { useState, useRef } = React
 
-const Navbar: React.FC<I.NavbarProps> = ({
+interface NavbarProps {
+  brand: JSX.Element
+  leftLinks?: JSX.Element
+  rightLinks?: JSX.Element
+  className?: string
+  theme?: ThemeProps
+  shouldHideOnScroll?: boolean
+}
+
+const Navbar: React.FC<NavbarProps> = ({
   brand,
   leftLinks,
   rightLinks,
-  theme = defaultTheme
+  theme = defaultTheme,
+  className = '',
+  shouldHideOnScroll
 }) => {
   const [isToggled, toggle] = useState(false)
-  const isHidden = useScrollSlide()
+  const isHidden = useScrollSlide(theme.height, shouldHideOnScroll)
   const navRef = useRef(null)
   useTheme(navRef, theme)
 
-  const navClassName = isHidden ? 'navHidden' : 'nav'
+  const navClassName = styles[computeClass(!!isHidden, 'navHidden', 'nav')]
   const shouldShowHamburger = leftLinks || rightLinks
 
   const onHamburgerClick = () => toggle(!isToggled)
 
   return (
-    <nav className={styles[navClassName]} ref={navRef} role="navigation">
+    <nav
+      className={`${navClassName} ${className}`}
+      ref={navRef}
+      role="navigation"
+    >
       {brand}
 
       {shouldShowHamburger && (

@@ -11,18 +11,21 @@ npm install --save @ovieokeh/react-navbar
 ```
 
 ## Available Props
+
 You can customise the look and content of the navbar by passing in the following props:
 
 ### Navbar Props
-| name       | type        | default value | isRequired |
-| ---------- | ----------- | ------------- | ---------- |
-| brand      | JSX.Element |               | true       |
-| leftLinks  | JSX.Element |               | false      |
-| rightLinks | JSX.Element |               | false      |
-| theme      | ThemeProps  |               | false      |
 
+| name               | type        | default value | isRequired |
+| ------------------ | ----------- | ------------- | ---------- |
+| brand              | JSX.Element |               | true       |
+| leftLinks          | JSX.Element |               | false      |
+| rightLinks         | JSX.Element |               | false      |
+| theme              | ThemeProps  |               | false      |
+| shouldHideOnScroll | boolean     | true          | false      |
 
 ### ThemeProps
+
 | prop            | type   | default value |
 | --------------- | ------ | ------------- |
 | mainColor       | string | "#333333"     |
