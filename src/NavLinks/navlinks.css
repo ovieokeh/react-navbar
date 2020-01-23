@@ -1,5 +1,7 @@
 .navLinks {
-  display: flex;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 2fr 1fr;
   width: 100%;
 }
 
