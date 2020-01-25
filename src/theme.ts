@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import * as React from 'react'
 
 export interface ThemeProps {
   backgroundColor?: string
@@ -28,7 +28,7 @@ export const useTheme = (
   navRef: React.RefObject<HTMLElement>,
   theme: ThemeProps
 ) =>
-  useEffect(() => {
+  React.useEffect(() => {
     const nav = navRef.current
 
     if (nav) {

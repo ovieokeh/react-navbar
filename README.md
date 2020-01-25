@@ -6,7 +6,7 @@
 
 This is a simple, extensible Navbar component for React. I built this because I realised that I kept creating navbars from scratch on every project.
 
-It is responsive and the navbar links collapse into a hamburger menu on mobile.
+It is responsive and the navbar as collapse into a hamburger menu on mobile.
 
 ## Install
 
@@ -29,6 +29,8 @@ You can customise the look and content of the navbar by passing in the following
 | shouldHideOnScroll | boolean     | true          | false      |
 | theme              | ThemeProps  |               | false      |
 
+If you pass in a `className` prop, you can style this class in your custom css to customize the look and feel of the navbar even more.
+
 #### ThemeProps
 
 | prop            | type   | default value |
@@ -41,45 +43,45 @@ You can customise the look and content of the navbar by passing in the following
 
 ## Usage
 
+Play with a [live CodeSandbox here](https://codesandbox.io/s/react-navbar-demo-gm15y)
+
 ```tsx
 import * as React from 'react'
-import { Link } from 'gatsby'
-import Navbar from 'react-navbar'
+import Navbar from '@ovie/react-navbar'
 
 const navTheme = {
   mainColor: '#52b788',
   menuBgColor: '#edf7f3'
 }
 
-const navBrand = <Link to={ROUTES.HOME}>Base Corp.</Link>
+const navBrand = <a href={ROUTES.HOME}>Base Corp.</a>
 
 const leftLinks = (
-  <span>
-    <Link to={ROUTES.PLANS}>Our Plans</Link>
-    <Link to={ROUTES.FAQ}>How It Works</Link>
-    <Link to={ROUTES.MENU}>Our Menus</Link>
-  </span>
+  <>
+    <a href={ROUTES.PLANS}>Our Plans</a>
+    <a href={ROUTES.FAQ}>How It Works</a>
+    <a href={ROUTES.MENU}>Our Menus</a>
+  </>
 )
 
 const rightLinks = (
-  <span>
+  <>
     <a href={ROUTES.SIGNUP}>Get Started</a>
     <a href={ROUTES.SIGNIN}>Sign In</a>
-  </span>
+  </>
 )
 
 const Example = () => {
   return (
     <div className="app">
       <Navbar
-        className="navbar"
+        className="navbar" // you can then style .navbar in your custom css
         brand={navBrand}
         theme={navTheme}
         leftLinks={leftLinks}
         rightLinks={rightLinks}
         shouldHideOnScroll={false}
       />
-      ...continued...
     </div>
   )
 }
