@@ -45,7 +45,7 @@
     height: 0;
     padding: 0 2em;
     background-color: var(--background-color);
-    background-color: var(--menu-bg-color, #f2f2f2);
+    background-color: var(--menu-bg-color);
     transition: height 200ms ease-in, width 200ms ease-in,
       border-radius ease-in 200ms;
     border-bottom-left-radius: 150%;
@@ -55,7 +55,7 @@
   .navLinksShow {
     composes: navLinks;
 
-    width: 100vw;
+    width: var(--slider-width, 100%);
     height: calc(100vh - var(--height));
     border-bottom-left-radius: 0;
 

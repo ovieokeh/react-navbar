@@ -27,7 +27,7 @@ export const useScrollSlide = (
 
     window && window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [prevPos])
+  }, [isHidden, navHeight, setHidden, setPrevPos, shouldScroll, prevPos])
 
   return isHidden
 }

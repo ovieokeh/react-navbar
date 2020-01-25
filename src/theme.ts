@@ -1,34 +1,27 @@
-import * as React from 'react'
-
-const { useEffect } = React
+import { useEffect } from 'react'
 
 export interface ThemeProps {
   backgroundColor?: string
   mainColor?: string
   menuBgColor?: string
-  shadowColor?: string
   height?: string
   sliderWidth?: string
-  padding?: string
 }
 
 export const themeMapping: ThemeProps = {
   mainColor: '--main-color',
   backgroundColor: '--background-color',
   menuBgColor: '--menu-bg-color',
-  shadowColor: '--shadow-color',
   height: '--height',
-  sliderWidth: '--slider-width',
-  padding: '--padding'
+  sliderWidth: '--slider-width'
 }
 
 export const defaultTheme: ThemeProps = {
   mainColor: '#333333',
   backgroundColor: '#ffffff',
-  shadowColor: '#4e4e4e',
+  menuBgColor: '#f2f2f2',
   height: '55px',
-  sliderWidth: '90%',
-  padding: '0 2em'
+  sliderWidth: '100%'
 }
 
 export const useTheme = (

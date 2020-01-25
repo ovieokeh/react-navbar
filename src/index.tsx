@@ -3,11 +3,12 @@ import * as React from 'react'
 import Hamburger from './Hamburger'
 import NavLinks from './NavLinks'
 
-import { defaultTheme, useTheme, ThemeProps } from './theme'
+import { defaultTheme, useTheme, ThemeProps as TProps } from './theme'
 import { useScrollSlide, computeClass } from './utils'
 import styles from './styles.css'
 
 const { useState, useRef } = React
+interface ThemeProps extends TProps {} // workaround for rollup [name] is not exported by [module] error
 
 interface NavbarProps {
   brand: JSX.Element
@@ -58,3 +59,4 @@ const Navbar: React.FC<NavbarProps> = ({
 }
 
 export default Navbar
+export { NavbarProps, ThemeProps }

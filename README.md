@@ -1,8 +1,12 @@
-# react-navbar
+# React Navbar
 
 > A responsive react navbar component
 
 [![NPM](https://img.shields.io/npm/v/react-navbar.svg)](https://www.npmjs.com/package/react-navbar) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+
+This is a simple, extensible Navbar component for React. I built this because I realised that I kept creating navbars from scratch on every project.
+
+It is responsive and the navbar links collapse into a hamburger menu on mobile.
 
 ## Install
 
@@ -14,27 +18,26 @@ npm install --save @ovieokeh/react-navbar
 
 You can customise the look and content of the navbar by passing in the following props:
 
-### Navbar Props
+#### Navbar Props
 
 | name               | type        | default value | isRequired |
 | ------------------ | ----------- | ------------- | ---------- |
+| className          | string      |               | false      |
 | brand              | JSX.Element |               | true       |
 | leftLinks          | JSX.Element |               | false      |
 | rightLinks         | JSX.Element |               | false      |
-| theme              | ThemeProps  |               | false      |
 | shouldHideOnScroll | boolean     | true          | false      |
+| theme              | ThemeProps  |               | false      |
 
-### ThemeProps
+#### ThemeProps
 
 | prop            | type   | default value |
 | --------------- | ------ | ------------- |
 | mainColor       | string | "#333333"     |
 | backgroundColor | string | "#ffffff"     |
-| shadowColor     | string | "#4e4e4e"     |
-| linkColor       | string | "#4e4e4e"     |
+| menuBgColor     | string | "#ffffff"     |
 | height          | string | "55px"        |
 | sliderWidth     | string | "100%"        |
-| padding         | string | "0 2em"       |
 
 ## Usage
 
@@ -44,11 +47,8 @@ import { Link } from 'gatsby'
 import Navbar from 'react-navbar'
 
 const navTheme = {
-  mainColor: 'red',
-  backgroundColor: '#ffffff',
-  shadowColor: '#4e4e4e',
-  linkColor: 'red',
-  height: '55px'
+  mainColor: '#52b788',
+  menuBgColor: '#edf7f3'
 }
 
 const navBrand = <Link to={ROUTES.HOME}>Base Corp.</Link>
@@ -70,15 +70,22 @@ const rightLinks = (
 
 const Example = () => {
   return (
-    <Navbar
-      brand={navBrand}
-      theme={navTheme}
-      leftLinks={leftLinks}
-      rightLinks={rightLinks}
-    />
+    <div className="app">
+      <Navbar
+        className="navbar"
+        brand={navBrand}
+        theme={navTheme}
+        leftLinks={leftLinks}
+        rightLinks={rightLinks}
+        shouldHideOnScroll={false}
+      />
+      ...continued...
+    </div>
   )
 }
 ```
+
+![Example](example-demo.gif)
 
 ## License
 
