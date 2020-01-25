@@ -1,8 +1,7 @@
 .nav {
   --main-color: #333333;
   --background-color: #ffffff;
-  --shadow-color: #4e4e4e;
-  --link-color: #4e4e4e;
+  --menu-bg-color: #f9f9f9;
   --height: 55px;
   --slider-width: 100%;
 
@@ -19,11 +18,23 @@
   left: 0;
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.07);
   box-sizing: border-box;
-  transition: top 200ms ease-in;
   z-index: 2;
 }
 
-.nav > a:first-child {
+.navAnimate {
+  composes: nav;
+
+  transition: top 200ms ease-in;
+}
+
+.nav *,
+.navAnimate * {
+  outline-width: 1px;
+  outline-color: var(--main-color);
+}
+
+.nav > a:first-child,
+.navAnimate > a:first-child {
   text-decoration: none;
   font-size: 1.5em;
   color: var(--main-color);
@@ -32,16 +43,24 @@
 
 .navHidden {
   composes: nav;
+
   top: calc(var(--height) * -1);
+}
+
+.navHiddenAnimate {
+  composes: navHidden;
+
   transition: top 300ms ease-out;
 }
 
 @media (max-width: 768px) {
-  .nav {
+  .nav,
+  .navAnimate {
     justify-content: space-between;
   }
 
-  .nav > a:first-child {
+  .nav > a:first-child,
+  .navAnimate > a:first-child {
     margin-right: 0;
   }
 }

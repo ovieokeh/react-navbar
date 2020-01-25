@@ -5,16 +5,21 @@ import styles from './navlinks.css'
 
 interface NavLinksProps {
   isOpen: boolean
+  shouldAnimate: boolean
   leftLinks?: JSX.Element
   rightLinks?: JSX.Element
 }
 
 const NavLinks: React.FC<NavLinksProps> = ({
   isOpen,
+  shouldAnimate,
   leftLinks,
   rightLinks
 }) => {
-  const className = styles[computeClass(!!isOpen, 'navLinksShow', 'navLinks')]
+  const className = shouldAnimate
+    ? styles[computeClass(!!isOpen, 'navLinksAnimateShow', 'navLinksAnimate')]
+    : styles[computeClass(!!isOpen, 'navLinksShow', 'navLinks')]
+
   useNoScroll(isOpen)
 
   return (

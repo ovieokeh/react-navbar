@@ -26,8 +26,9 @@ You can customise the look and content of the navbar by passing in the following
 | brand              | JSX.Element |               | true       |
 | leftLinks          | JSX.Element |               | false      |
 | rightLinks         | JSX.Element |               | false      |
-| shouldHideOnScroll | boolean     | true          | false      |
 | theme              | ThemeProps  |               | false      |
+| shouldHideOnScroll | boolean     | true          | false      |
+| shouldAnimate      | boolean     | true          | false      |
 
 If you pass in a `className` prop, you can style this class in your custom css to customize the look and feel of the navbar even more.
 
@@ -43,7 +44,10 @@ If you pass in a `className` prop, you can style this class in your custom css t
 
 ## Usage
 
-Play with a [live CodeSandbox here](https://codesandbox.io/s/react-navbar-demo-gm15y)
+Play with a
+
+- [live CodeSandbox here (JS)](https://codesandbox.io/s/react-navbar-demo-48g1c)
+- [live codeSandbox here (TS)](https://codesandbox.io/s/react-navbar-demo--typescript-gm15y)
 
 ```tsx
 import * as React from 'react'
@@ -75,12 +79,11 @@ const Example = () => {
   return (
     <div className="app">
       <Navbar
-        className="navbar" // you can then style .navbar in your custom css
+        className="navbar" // style .navbar in your custom css
         brand={navBrand}
         theme={navTheme}
         leftLinks={leftLinks}
         rightLinks={rightLinks}
-        shouldHideOnScroll={false}
       />
     </div>
   )

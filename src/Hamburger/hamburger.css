@@ -1,17 +1,15 @@
-.hidden {
+.burger {
   display: none;
   background-color: transparent;
   width: 28px;
-  height: 18px;
+  height: 23px;
   transform: rotate(0deg);
-  transition: 300ms ease-in-out;
   border: none;
-  outline: transparent;
   cursor: pointer;
   z-index: 300;
 }
 
-.bar {
+.patty {
   display: block;
   position: absolute;
   height: 3px;
@@ -22,51 +20,62 @@
   left: 0;
   transform: rotate(0deg);
   transform-origin: left center;
-  transition: 300ms ease-in-out;
   pointer-events: none;
 }
 
-.bar:nth-child(1) {
+.pattyAnimate {
+  composes: patty;
+
+  transition: 300ms ease-in-out;
+}
+
+.patty:nth-child(1),
+.pattyAnimate:nth-child(1) {
   top: 0px;
 }
 
-.bar:nth-child(2) {
+.patty:nth-child(2),
+.pattyAnimate:nth-child(2) {
   top: 9px;
 }
 
-.bar:nth-child(3) {
+.patty:nth-child(3),
+.pattyAnimate:nth-child(3) {
   top: 18px;
 }
 
-.show {
-  composes: hidden;
-}
-
-.barActive {
-  composes: bar;
+.pattyActive {
+  composes: patty;
   background: var(--main-color);
   opacity: 0.6;
 }
 
-.barActive:nth-child(1) {
+.pattyActiveAnimate {
+  composes: pattyAnimate;
+}
+
+.pattyActive:nth-child(1),
+.pattyActiveAnimate:nth-child(1) {
   transform: rotate(45deg);
   top: 0;
   left: 8px;
 }
 
-.barActive:nth-child(2) {
+.pattyActive:nth-child(2),
+.pattyActiveAnimate:nth-child(2) {
   width: 0%;
   opacity: 0;
 }
 
-.barActive:nth-child(3) {
+.pattyActive:nth-child(3),
+.pattyActiveAnimate:nth-child(3) {
   transform: rotate(-45deg);
   top: 20px;
   left: 8px;
 }
 
 @media (max-width: 768px) {
-  .hidden {
+  .burger {
     display: block;
   }
 }

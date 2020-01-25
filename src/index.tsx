@@ -8,7 +8,7 @@ import { useScrollSlide, computeClass } from './utils'
 import styles from './styles.css'
 
 const { useState, useRef } = React
-interface ThemeProps extends TProps {} // workaround for rollup [name] is not exported by [module] error
+interface ThemeProps extends TProps {} // TODO fix rollup [name] is not exported by [module] error
 
 interface NavbarProps {
   brand: JSX.Element
@@ -17,6 +17,7 @@ interface NavbarProps {
   className?: string
   theme?: ThemeProps
   shouldHideOnScroll?: boolean
+  shouldAnimate?: boolean
 }
 
 const Navbar: React.FC<NavbarProps> = ({
@@ -25,14 +26,18 @@ const Navbar: React.FC<NavbarProps> = ({
   rightLinks,
   theme = defaultTheme,
   className = '',
-  shouldHideOnScroll
+  shouldHideOnScroll,
+  shouldAnimate = true
 }) => {
   const [isToggled, toggle] = useState(false)
   const isHidden = useScrollSlide(theme.height, shouldHideOnScroll)
   const navRef = useRef(null)
   useTheme(navRef, theme)
 
-  const navClassName = styles[computeClass(!!isHidden, 'navHidden', 'nav')]
+  const navClassName = shouldAnimate
+    ? styles[computeClass(!!isHidden, 'navHiddenAnimate', 'navAnimate')]
+    : styles[computeClass(!!isHidden, 'navHidden', 'nav')]
+
   const shouldShowHamburger = leftLinks || rightLinks
 
   const onHamburgerClick = () => toggle(!isToggled)
@@ -46,11 +51,16 @@ const Navbar: React.FC<NavbarProps> = ({
       {brand}
 
       {shouldShowHamburger && (
-        <Hamburger isToggled={isToggled} onToggle={onHamburgerClick} />
+        <Hamburger
+          isToggled={isToggled}
+          shouldAnimate={shouldAnimate}
+          onToggle={onHamburgerClick}
+        />
       )}
 
       <NavLinks
         isOpen={isToggled}
+        shouldAnimate={shouldAnimate}
         leftLinks={leftLinks}
         rightLinks={rightLinks}
       />
