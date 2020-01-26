@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 export const useScrollSlide = (
   height: string | undefined = '55px',
-  shouldScroll: boolean | undefined = true
+  shouldScroll: boolean
 ) => {
   const pos = typeof window !== 'undefined' ? window.pageYOffset : 0
   const [isHidden, setHidden] = useState(false)

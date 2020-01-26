@@ -15,6 +15,7 @@ interface NavbarProps {
   leftLinks?: JSX.Element
   rightLinks?: JSX.Element
   className?: string
+  menuClassName?: string
   theme?: ThemeProps
   shouldHideOnScroll?: boolean
   shouldAnimate?: boolean
@@ -26,7 +27,8 @@ const Navbar: React.FC<NavbarProps> = ({
   rightLinks,
   theme = defaultTheme,
   className = '',
-  shouldHideOnScroll,
+  menuClassName = '',
+  shouldHideOnScroll = true,
   shouldAnimate = true
 }) => {
   const [isToggled, toggle] = useState(false)
@@ -35,7 +37,7 @@ const Navbar: React.FC<NavbarProps> = ({
   useTheme(navRef, theme)
 
   const navClassName = shouldAnimate
-    ? styles[computeClass(!!isHidden, 'navHiddenAnimate', 'navAnimate')]
+    ? styles[computeClass(!!isHidden, 'navAnimateHidden', 'navAnimate')]
     : styles[computeClass(!!isHidden, 'navHidden', 'nav')]
 
   const shouldShowHamburger = leftLinks || rightLinks
@@ -59,6 +61,7 @@ const Navbar: React.FC<NavbarProps> = ({
       )}
 
       <NavLinks
+        customClassName={menuClassName}
         isOpen={isToggled}
         shouldAnimate={shouldAnimate}
         leftLinks={leftLinks}

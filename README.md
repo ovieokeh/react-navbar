@@ -6,7 +6,7 @@
 
 This is a simple, extensible Navbar component for React. I built this because I realised that I kept creating navbars from scratch on every project.
 
-It is responsive and the navbar as collapse into a hamburger menu on mobile.
+It is responsive and the navbar items collapse into a hamburger menu on mobile.
 
 ## Install
 
@@ -23,6 +23,7 @@ You can customise the look and content of the navbar by passing in the following
 | name               | type        | default value | isRequired |
 | ------------------ | ----------- | ------------- | ---------- |
 | className          | string      |               | false      |
+| menuClassName      | string      |               | false      |
 | brand              | JSX.Element |               | true       |
 | leftLinks          | JSX.Element |               | false      |
 | rightLinks         | JSX.Element |               | false      |
@@ -79,7 +80,8 @@ const Example = () => {
   return (
     <div className="app">
       <Navbar
-        className="navbar" // style .navbar in your custom css
+        className="navbar" // style .navbar in your css
+        menuClassName="navbar--menu" // style .navbar--menu in your css
         brand={navBrand}
         theme={navTheme}
         leftLinks={leftLinks}

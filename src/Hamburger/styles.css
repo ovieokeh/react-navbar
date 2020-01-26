@@ -1,26 +1,31 @@
 .burger {
   display: none;
   background-color: transparent;
-  width: 28px;
-  height: 23px;
-  transform: rotate(0deg);
+  width: 25px;
+  height: 22px;
   border: none;
   cursor: pointer;
   z-index: 300;
+  padding: 0;
+  position: relative;
 }
 
 .patty {
   display: block;
   position: absolute;
   height: 3px;
-  width: 100%;
+  width: 25px;
   background-color: var(--main-color);
   border-radius: 12px;
   opacity: 1;
   left: 0;
-  transform: rotate(0deg);
   transform-origin: left center;
   pointer-events: none;
+}
+.pattyActive {
+  composes: patty;
+
+  opacity: 0.6;
 }
 
 .pattyAnimate {
@@ -28,10 +33,15 @@
 
   transition: 300ms ease-in-out;
 }
+.pattyAnimateActive {
+  composes: pattyAnimate;
+
+  opacity: 0.6;
+}
 
 .patty:nth-child(1),
 .pattyAnimate:nth-child(1) {
-  top: 0px;
+  top: 0;
 }
 
 .patty:nth-child(2),
@@ -44,34 +54,22 @@
   top: 18px;
 }
 
-.pattyActive {
-  composes: patty;
-  background: var(--main-color);
-  opacity: 0.6;
-}
-
-.pattyActiveAnimate {
-  composes: pattyAnimate;
-}
-
 .pattyActive:nth-child(1),
-.pattyActiveAnimate:nth-child(1) {
+.pattyAnimateActive:nth-child(1) {
   transform: rotate(45deg);
-  top: 0;
-  left: 8px;
+  left: 3.5px;
 }
 
 .pattyActive:nth-child(2),
-.pattyActiveAnimate:nth-child(2) {
+.pattyAnimateActive:nth-child(2) {
   width: 0%;
   opacity: 0;
 }
 
 .pattyActive:nth-child(3),
-.pattyActiveAnimate:nth-child(3) {
+.pattyAnimateActive:nth-child(3) {
   transform: rotate(-45deg);
-  top: 20px;
-  left: 8px;
+  left: 3.5px;
 }
 
 @media (max-width: 768px) {

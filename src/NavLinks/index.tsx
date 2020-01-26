@@ -1,9 +1,10 @@
 import * as React from 'react'
 
 import { useNoScroll, computeClass } from '../utils'
-import styles from './navlinks.css'
+import styles from './styles.css'
 
 interface NavLinksProps {
+  customClassName: string
   isOpen: boolean
   shouldAnimate: boolean
   leftLinks?: JSX.Element
@@ -11,6 +12,7 @@ interface NavLinksProps {
 }
 
 const NavLinks: React.FC<NavLinksProps> = ({
+  customClassName,
   isOpen,
   shouldAnimate,
   leftLinks,
@@ -23,7 +25,7 @@ const NavLinks: React.FC<NavLinksProps> = ({
   useNoScroll(isOpen)
 
   return (
-    <div className={className}>
+    <div className={`${className} ${customClassName}`}>
       <span className={styles.navLinksGroupLeft}>{leftLinks}</span>
       <span className={styles.navLinksGroupRight}>{rightLinks}</span>
     </div>

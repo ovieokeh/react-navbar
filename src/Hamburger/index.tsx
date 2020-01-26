@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import { computeClass } from '../utils'
-import styles from './hamburger.css'
+import styles from './styles.css'
 
 interface HamburgerProps {
   isToggled: boolean
@@ -14,13 +14,12 @@ const Hamburger: React.FC<HamburgerProps> = ({
   shouldAnimate,
   onToggle
 }) => {
-  const burgerClass = styles['burger']
   const pattyClass = shouldAnimate
-    ? styles[computeClass(!!isToggled, 'pattyActiveAnimate', 'pattyAnimate')]
+    ? styles[computeClass(!!isToggled, 'pattyAnimateActive', 'pattyAnimate')]
     : styles[computeClass(!!isToggled, 'pattyActive', 'patty')]
 
   return (
-    <button className={burgerClass} type="button" onClick={onToggle}>
+    <button className={styles.burger} type="button" onClick={onToggle}>
       <span className={pattyClass} />
       <span className={pattyClass} />
       <span className={pattyClass} />

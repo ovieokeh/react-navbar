@@ -47,7 +47,7 @@
   top: calc(var(--height) * -1);
 }
 
-.navHiddenAnimate {
+.navAnimateHidden {
   composes: navHidden;
 
   transition: top 300ms ease-out;
