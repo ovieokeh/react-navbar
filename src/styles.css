@@ -18,7 +18,7 @@
   left: 0;
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.07);
   box-sizing: border-box;
-  z-index: 2;
+  z-index: 9999;
 }
 
 .navAnimate {
