@@ -1,7 +1,4 @@
-import commonjs from '@rollup/plugin-commonjs'
-import resolve from '@rollup/plugin-node-resolve'
-import url from '@rollup/plugin-url'
-import postcss from 'rollup-plugin-postcss'
+import sass from 'rollup-plugin-sass'
 import typescript from 'rollup-plugin-typescript2'
 
 import pkg from './package.json'
@@ -13,25 +10,10 @@ export default {
       file: pkg.main,
       format: 'cjs',
       exports: 'named',
-      sourcemap: true
-    },
-    {
-      file: pkg.module,
-      format: 'es',
-      exports: 'named',
-      sourcemap: true
+      sourcemap: true,
+      strict: false
     }
   ],
-  plugins: [
-    postcss({
-      modules: true
-    }),
-    url(),
-    resolve(),
-    typescript({
-      objectHashIgnoreUnknownHack: true
-    }),
-    commonjs()
-  ],
+  plugins: [sass({ insert: true }), typescript()],
   external: ['react', 'react-dom']
 }

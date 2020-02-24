@@ -4,8 +4,8 @@ import Hamburger from './Hamburger'
 import NavLinks from './NavLinks'
 
 import { defaultTheme, useTheme, ThemeProps as TProps } from './theme'
-import { useScrollSlide, computeClass } from './utils'
-import styles from './styles.css'
+import { useScrollSlide } from './utils'
+import './styles.scss'
 
 const { useState, useRef } = React
 interface ThemeProps extends TProps {} // TODO fix rollup [name] is not exported by [module] error
@@ -36,9 +36,15 @@ const Navbar: React.FC<NavbarProps> = ({
   const navRef = useRef(null)
   useTheme(navRef, theme)
 
-  const navClassName = shouldAnimate
-    ? styles[computeClass(!!isHidden, 'navAnimateHidden', 'navAnimate')]
-    : styles[computeClass(!!isHidden, 'navHidden', 'nav')]
+  const otherClassnames: string[] = []
+
+  if (shouldAnimate) {
+    !!isHidden
+      ? otherClassnames.push('nav--animate--hidden')
+      : otherClassnames.push('nav--animate')
+  } else {
+    !!isHidden && otherClassnames.push('nav--hidden')
+  }
 
   const shouldShowHamburger = leftLinks || rightLinks
 
@@ -46,7 +52,7 @@ const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <nav
-      className={`${navClassName} ${className}`}
+      className={`nav ${otherClassnames} ${className}`.trim()}
       ref={navRef}
       role="navigation"
     >

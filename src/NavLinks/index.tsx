@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-import { useNoScroll, computeClass } from '../utils'
-import styles from './styles.css'
+import { useNoScroll } from '../utils'
+import './styles.scss'
 
 interface NavLinksProps {
   customClassName: string
@@ -18,16 +18,22 @@ const NavLinks: React.FC<NavLinksProps> = ({
   leftLinks,
   rightLinks
 }) => {
-  const className = shouldAnimate
-    ? styles[computeClass(!!isOpen, 'navLinksAnimateShow', 'navLinksAnimate')]
-    : styles[computeClass(!!isOpen, 'navLinksShow', 'navLinks')]
+  const otherClassNames: string[] = []
+
+  if (shouldAnimate) {
+    !!isOpen
+      ? otherClassNames.push('animate show')
+      : otherClassNames.push('animate')
+  } else {
+    !!isOpen && otherClassNames.push('nav-links--show')
+  }
 
   useNoScroll(isOpen)
 
   return (
-    <div className={`${className} ${customClassName}`}>
-      <span className={styles.navLinksGroupLeft}>{leftLinks}</span>
-      <span className={styles.navLinksGroupRight}>{rightLinks}</span>
+    <div className={`nav-links ${otherClassNames} ${customClassName}`.trim()}>
+      <span className="nav-links__group left">{leftLinks}</span>
+      <span className="nav-links__group right">{rightLinks}</span>
     </div>
   )
 }

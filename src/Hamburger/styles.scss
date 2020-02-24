@@ -1,0 +1,75 @@
+.burger {
+  display: none;
+  background-color: transparent;
+  width: 25px;
+  height: 22px;
+  border: none;
+  padding: 0;
+  position: relative;
+  z-index: 300;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+
+  // =========== Extensions =================  /
+  .patty-static-position {
+    &:nth-child(1) {
+      top: 0;
+    }
+    &:nth-child(2) {
+      top: 9px;
+    }
+    &:nth-child(3) {
+      top: 18px;
+    }
+  }
+
+  .patty-active-position {
+    &:nth-child(1) {
+      transform: rotate(45deg);
+      left: 3.5px;
+    }
+    &:nth-child(2) {
+      width: 0%;
+      opacity: 0;
+    }
+    &:nth-child(3) {
+      transform: rotate(-45deg);
+      left: 3.5px;
+    }
+  }
+  // =========== Extensions =================  //
+
+  .patty {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 25px;
+    background-color: var(--main-color);
+    border-radius: 12px;
+    opacity: 1;
+    left: 0;
+    transform-origin: left center;
+    pointer-events: none;
+
+    @extend .patty-static-position;
+
+    &.active {
+      opacity: 0.6;
+
+      @extend .patty-active-position;
+    }
+
+    &.animate {
+      transition: 300ms ease-in-out;
+
+      &.active {
+        transition: 300ms ease-in-out;
+
+        @extend .patty-active-position;
+      }
+    }
+  }
+}
