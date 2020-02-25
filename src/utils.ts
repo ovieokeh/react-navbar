@@ -39,10 +39,24 @@ export const useNoScroll = (shouldScroll: boolean) =>
   }, [shouldScroll])
 
 export const computeClass = (
+  shouldAnimate: boolean,
   cond: boolean,
-  alt: string,
+  alternate: string,
+  baseAlternate: string,
   main: string
-): string => (cond ? alt : main)
+): string[] => {
+  const otherClassnames: string[] = []
+
+  if (shouldAnimate) {
+    !!cond
+      ? otherClassnames.push(alternate)
+      : otherClassnames.push(baseAlternate)
+  } else {
+    !!cond && otherClassnames.push(main)
+  }
+
+  return otherClassnames
+}
 
 export const getNumber = (str: string): number => {
   let number = ''

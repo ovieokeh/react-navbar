@@ -4,7 +4,7 @@ import Hamburger from './Hamburger'
 import NavLinks from './NavLinks'
 
 import { defaultTheme, useTheme, ThemeProps as TProps } from './theme'
-import { useScrollSlide } from './utils'
+import { useScrollSlide, computeClass } from './utils'
 import './styles.scss'
 
 const { useState, useRef } = React
@@ -36,15 +36,13 @@ const Navbar: React.FC<NavbarProps> = ({
   const navRef = useRef(null)
   useTheme(navRef, theme)
 
-  const otherClassnames: string[] = []
-
-  if (shouldAnimate) {
-    !!isHidden
-      ? otherClassnames.push('nav--animate--hidden')
-      : otherClassnames.push('nav--animate')
-  } else {
-    !!isHidden && otherClassnames.push('nav--hidden')
-  }
+  const otherClassnames = computeClass(
+    shouldAnimate,
+    isHidden,
+    'nav--animate--hidden',
+    'nav--animate',
+    'nav--hidden'
+  )
 
   const shouldShowHamburger = leftLinks || rightLinks
 

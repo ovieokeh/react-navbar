@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { useNoScroll } from '../utils'
+import { useNoScroll, computeClass } from '../utils'
 import './styles.scss'
 
 interface NavLinksProps {
@@ -18,15 +18,13 @@ const NavLinks: React.FC<NavLinksProps> = ({
   leftLinks,
   rightLinks
 }) => {
-  const otherClassNames: string[] = []
-
-  if (shouldAnimate) {
-    !!isOpen
-      ? otherClassNames.push('animate show')
-      : otherClassNames.push('animate')
-  } else {
-    !!isOpen && otherClassNames.push('nav-links--show')
-  }
+  const otherClassNames = computeClass(
+    shouldAnimate,
+    isOpen,
+    'animate show',
+    'animate',
+    'nav-links--show'
+  )
 
   useNoScroll(isOpen)
 
